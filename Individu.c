@@ -9,7 +9,7 @@
 #define longIndivQ 8
 
 
-
+//Création d'un individu
 Individu *creerIndividu(int longIndiv) {
     Individu *indiv = (Individu *) malloc(sizeof(Individu));
     indiv->bits = (Bit *) malloc(longIndiv * sizeof(Bit));
@@ -37,7 +37,7 @@ void initIndividuRec(Individu *indiv, int i) {
     }
 }
 
-//afficher la liste des bits
+//afficher la liste des bits ( Individu)
 void afficherIndividu(Individu *indiv) {
     int i;
     for (i = 0; i < indiv->longIndiv; i++) {
@@ -46,6 +46,7 @@ void afficherIndividu(Individu *indiv) {
     printf("\n ");
 }
 
+//décoder la liste de bits associer à un individu
 int decodeIndividu(Individu *indiv) {
     int i, val = 0;
     for (i = 0; i < indiv->longIndiv; i++) {
@@ -54,12 +55,14 @@ int decodeIndividu(Individu *indiv) {
     return val;
 }
 
+//calculer la qualité d'un individu
 float calculQualiteIndividu(Individu *indiv,int x) {
     float fct = (x/puissance(2,longIndivQ))*(B-A)+A;
     float Qualite = -(puissance(fct,2));
     return Qualite;
 }
 
+//fonction puissance nécessaire pour qualité
 float puissance(float x, int n) {
     if (n == 0) {
         return 1;
@@ -69,17 +72,3 @@ float puissance(float x, int n) {
 }
 
 
-int main() {
-    srand(time(NULL));
-    Individu *indiv = creerIndividu(rand() % 10 + 1);
-    initIndividu(indiv);
-    afficherIndividu(indiv);
-    printf("valeur = %d\n", decodeIndividu(indiv));
-    return 0;
-}
-
-/*
-
-
-
-*/
