@@ -1,0 +1,50 @@
+Algorithmes pour la gestion d'un individu ( Fichier individu.c)
+
+
+  
+Initialiser aléatoirement la liste de bits : 
+ 1) itérativement
+  2) récursivement
+ 
+1) 
+Entrée : un individu
+Sortie : un individu avec une liste de bits aléatoire
+InitIndividu(Individu indiv)
+   Pour i allant de 0 à longIndiv faire 
+        Genérer un nombre aléatoire entre 0 et 1
+        Affecter ce nombre aléatoire à indiv
+        Incrémenter i
+   Fin pour
+Fin 
+
+2)  
+InitIndividuRec(Individu indiv, int i)
+  Si i < longIndiv alors
+        Genérer un nombre aléatoire entre 0 et 1
+        Affecter ce nombre aléatoire à indiv
+   initIndividuRec = initIndividuRec(indiv, i+1)
+   Sinon retourner la liste de bits
+Fin 
+
+
+Décoder la liste en une valeur 
+
+Entrée : individu
+Sortie : valeur décimale de l'individu
+decodeIndividu(individu Indiv)
+    val = 0
+    pour i allant de 0 à longIndiv-1
+        val = val * 2 + bits[i]
+    fin pour
+    retourner val
+fin
+
+Calcul de Qualité : 
+
+Entrée: Individu et x
+Sortie: Qualité de l'individu ( réel )
+calculQualiteIndividu(Individu indiv, int x)
+fonction = (x/2^longIndiv)*(B-A)+A
+Qualité = -(fonction^2)
+renvoyer Qualité
+
