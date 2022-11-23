@@ -5,10 +5,9 @@
 
 //main pour test
 int main() {
-    srand(time(NULL));
-    Individu *indiv = creerIndividu(rand() % 10 + 1);
+    Individu indiv = creerIndividu(8);
     initIndividu(indiv);
     afficherIndividu(indiv);
-    printf("valeur = %d\n", decodeIndividu(indiv));
+    printf("Qualité de l'individu : %f\n", calculQualiteIndividu(indiv, 2));
     return 0;
 }

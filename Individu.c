@@ -8,18 +8,48 @@
 #define B 1
 #define longIndivQ 8
 
+Individu AjoutTete(Individu indiv, Bit bit){
+    element *nouveau = malloc(sizeof(element));
+    nouveau->bits = bit;
+    nouveau->suivant = indiv.premier;
+    indiv.premier = nouveau;
+    printf("Ajout de %d a la tete de l'individu\n", bit);
+    return indiv;
+}
 
+void initIndividu(Individu indiv, int longIndiv){
+    srand(time(NULL));
+    for(int i = 0; i < longIndiv; i++){
+        Bit bit = rand() % 2;
+        indiv = AjoutTete(indiv, bit);
+    }
+}
+
+void afficherIndividu(Individu indiv){
+    if(indiv.premier == NULL){
+        printf("L'individu est vide\n");
+    }
+    else{
+        element *actuel = indiv.premier;
+        while(actuel != NULL){
+            printf("valeur indiv : %d", actuel->bits);
+            actuel = actuel->suivant;
+        }
+        printf("\n");
+    }
+}
+/*
 //Création d'un individu
-Individu *creerIndividu(int longIndiv) {
+Individu creerIndividu(int longIndiv) {
     Individu *indiv = (Individu *) malloc(sizeof(Individu));
     indiv->bits = (Bit *) malloc(longIndiv * sizeof(Bit));
     indiv->longIndiv = longIndiv;
-    return indiv;
+    return *indiv;
 }
 
 //initialiser aléatoirement la liste des bits
 //itérativement
-void initIndividu(Individu *indiv) {
+void initIndividu(Individu indiv) {
     int i;
     for (i = 0; i < indiv->longIndiv; i++) {
         indiv->bits[i] = rand() % 2;
@@ -27,14 +57,15 @@ void initIndividu(Individu *indiv) {
 }
 
 //récursivement
-void initIndividuRec(Individu *indiv, int i) {
+Individu initIndividuRec(Individu indiv, int i) {
     if (i < indiv->longIndiv) {
         indiv->bits[i] = rand() % 2;
         return initIndividuRec(indiv, i + 1);
     }
     else {
-        return;
+        return indiv;
     }
+
 }
 
 //afficher la liste des bits ( Individu)
@@ -54,9 +85,9 @@ int decodeIndividu(Individu *indiv) {
     }
     return val;
 }
-
+*/
 //calculer la qualité d'un individu
-float calculQualiteIndividu(Individu *indiv,int x) {
+float calculQualiteIndividu(Individu indiv,int x) {
     float fct = (x/puissance(2,longIndivQ))*(B-A)+A;
     float Qualite = -(puissance(fct,2));
     return Qualite;
@@ -71,4 +102,10 @@ float puissance(float x, int n) {
     }
 }
 
-
+int main() {
+    Individu indiv;
+    initIndividu(indiv,2);
+    afficherIndividu(indiv);
+    //printf("Qualite de l'individu : %f\n", calculQualiteIndividu(indiv, 2));
+    return 0;
+}
