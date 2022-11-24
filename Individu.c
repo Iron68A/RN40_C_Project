@@ -3,6 +3,18 @@
 #include <time.h>
 #include "Individu.h"
 
+/**
+ * @brief Fichier individu.c, contient les fonctions de manipulation et de création des individus
+ * @file individu.c
+ * 
+*/
+
+
+
+
+
+
+
 //variables globales pour Qualité
 #define A -1
 #define B 1
