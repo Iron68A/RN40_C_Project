@@ -5,9 +5,16 @@
 
 //main pour test
 int main() {
-    Individu indiv = creerIndividu(8);
-    initIndividu(indiv);
+    srand(time(NULL));
+    int alea = rand()%10+1;
+    Individu indiv = creerIndividuT(alea);
     afficherIndividu(indiv);
-    printf("Qualité de l'individu : %f\n", calculQualiteIndividu(indiv, 2));
+    int tab[alea];
+    IndivToTab(indiv, tab);
+    AfficherIndivMSB_Gauche(tab, alea);
+    printf("decode : %d\n", decode(indiv));
+    printf("Qualite : %f\n", calculQualiteIndividu(indiv));
+
+
     return 0;
 }

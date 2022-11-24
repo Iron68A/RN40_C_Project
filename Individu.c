@@ -8,89 +8,104 @@
 #define B 1
 #define longIndivQ 8
 
+//Creer les bits d'un individu
 Individu AjoutTete(Individu indiv, Bit bit){
-    element *nouveau = malloc(sizeof(element));
+    element *nouveau = (element *)malloc(sizeof(element));
     nouveau->bits = bit;
     nouveau->suivant = indiv.premier;
     indiv.premier = nouveau;
-    printf("Ajout de %d a la tete de l'individu\n", bit);
     return indiv;
 }
 
-void initIndividu(Individu indiv, int longIndiv){
+//creer un individu itérativement
+Individu creerIndividuT(int longIndiv){
+    Individu indiv;
     srand(time(NULL));
-    for(int i = 0; i < longIndiv; i++){
-        Bit bit = rand() % 2;
+    indiv.premier = NULL;
+    int i;
+    for(i=0; i<longIndiv; i++){
+        int bit = rand()%2;
         indiv = AjoutTete(indiv, bit);
     }
+    return indiv;
+}
+//creer un individu récursivement
+Individu creerIndividuR(int longIndiv){
+    Individu indiv;
+    srand(time(NULL));
+    indiv.premier = NULL;
+    if(longIndiv>0){
+        int bit = rand()%2;
+        indiv = AjoutTete(indiv, bit);
+        creerIndividuR(longIndiv - 1);
+    }
+    return indiv;
 }
 
+//Mettre un individu dans un tableau poour affichage avec MSB à gauche
+void IndivToTab(Individu indiv, int *tab){
+    if(indiv.premier == NULL){
+        printf("L'individu est vide\n");
+    }
+    else{
+        element *actuel = indiv.premier;
+        int i=0;
+        while(actuel != NULL){
+            tab[i] = actuel->bits;
+            actuel = actuel->suivant;
+            i++;
+        }
+    } 
+}
+
+//afficher le tableau inverse
+void AfficherIndivMSB_Gauche(int *tab, int longIndiv){
+    int i;
+    printf("L'individu est ( MSB a gauche, inverse de individu) : ");
+    for(i=longIndiv-1; i>=0; i--){
+        printf("%d", tab[i]);
+    }
+    printf("\n");
+}
+
+
+//afficher individu
 void afficherIndividu(Individu indiv){
     if(indiv.premier == NULL){
         printf("L'individu est vide\n");
     }
     else{
         element *actuel = indiv.premier;
+        printf("L'individu est : ");
         while(actuel != NULL){
-            printf("valeur indiv : %d", actuel->bits);
+            printf("%d", actuel->bits);
             actuel = actuel->suivant;
         }
         printf("\n");
     }
 }
-/*
-//Création d'un individu
-Individu creerIndividu(int longIndiv) {
-    Individu *indiv = (Individu *) malloc(sizeof(Individu));
-    indiv->bits = (Bit *) malloc(longIndiv * sizeof(Bit));
-    indiv->longIndiv = longIndiv;
-    return *indiv;
+
+
+
+//fonction de conversion d'un individu en entier
+int decode(Individu indiv){
+    int i = 0;
+    int res = 0;
+    element *actuel = indiv.premier;
+    while(actuel != NULL){
+        res += actuel->bits * puissance(2,i);
+        actuel = actuel->suivant;
+        i++;
+    }
+    return res;
 }
 
-//initialiser aléatoirement la liste des bits
-//itérativement
-void initIndividu(Individu indiv) {
-    int i;
-    for (i = 0; i < indiv->longIndiv; i++) {
-        indiv->bits[i] = rand() % 2;
-    }
-}
-
-//récursivement
-Individu initIndividuRec(Individu indiv, int i) {
-    if (i < indiv->longIndiv) {
-        indiv->bits[i] = rand() % 2;
-        return initIndividuRec(indiv, i + 1);
-    }
-    else {
-        return indiv;
-    }
-
-}
-
-//afficher la liste des bits ( Individu)
-void afficherIndividu(Individu *indiv) {
-    int i;
-    for (i = 0; i < indiv->longIndiv; i++) {
-        printf("%d", indiv->bits[i]);
-    }
-    printf("\n ");
-}
-
-//décoder la liste de bits associer à un individu
-int decodeIndividu(Individu *indiv) {
-    int i, val = 0;
-    for (i = 0; i < indiv->longIndiv; i++) {
-        val = val * 2 + indiv->bits[i];
-    }
-    return val;
-}
-*/
 //calculer la qualité d'un individu
-float calculQualiteIndividu(Individu indiv,int x) {
+float calculQualiteIndividu(Individu indiv) {
+    int x = decode(indiv);
     float fct = (x/puissance(2,longIndivQ))*(B-A)+A;
-    float Qualite = -(puissance(fct,2));
-    return Qualite;
+    float res = fct * fct;
+    return -res;
 }
 
 //fonction puissance nécessaire pour qualité
@@ -102,10 +117,5 @@ float puissance(float x, int n) {
     }
 }
 
-int main() {
-    Individu indiv;
-    initIndividu(indiv,2);
-    afficherIndividu(indiv);
-    //printf("Qualite de l'individu : %f\n", calculQualiteIndividu(indiv, 2));
-    return 0;
-}
+
+

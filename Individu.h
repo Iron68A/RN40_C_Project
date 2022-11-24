@@ -16,12 +16,13 @@ typedef struct Individu {
 
 
 Individu AjoutTete(Individu indiv, Bit bit);
-Individu creerIndividu(int longIndiv);
-void initIndividu(Individu indiv, int longIndiv);
+Individu creerIndividuR(int longIndiv);
+Individu creerIndividuT(int longIndiv);
 void afficherIndividu(Individu indiv);
-
-
-float calculQualiteIndividu(Individu indiv, int x);
+void IndivToTab(Individu indiv, int *tab);
+void AfficherIndivMSB_Gauche(int *tab, int longIndiv);
+int decode(Individu Indiv);
+float calculQualiteIndividu(Individu indiv);
 float puissance(float x, int n);
 #endif // INDIVIDU_H
 
