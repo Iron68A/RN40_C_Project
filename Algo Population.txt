@@ -58,7 +58,7 @@ Fin
 Entrée : 2 populartions : L1 et  L2
 Sortie : 3 ème population
 
-concat(populartion L1, populartion L2) --> populartions  
+concat(population L1, population L2) --> populartions  
 Si estVide(L1) alors :
 	concat(L1,L2) = L2
 Sinon Si estVide(L2) alors :

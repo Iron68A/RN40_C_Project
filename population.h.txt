@@ -16,11 +16,12 @@ struct Population
 
 
 Population AjoutTetePop(Population population, Individu individu);
-Population InitPopulation(int TaillePop, int longIndiv)
-void afficherIndividu(Individu indiv);
-void IndivToTab(Individu indiv, int *tab);
-void AfficherIndivMSB_Gauche(int *tab, int longIndiv);
-int decode(Individu Indiv);
-float calculQualiteIndividu(Individu indiv);
-float puissance(float x, int n);
-#endif // INDIVIDU_H
+Population InitPopulation(int TaillePop, int longIndiv);
+Quicksort( population P);
+diviser(population P, population L1, population L2);
+concat(population L1, population L2);
+
+bestind()
+croiserPop()
+
+#endif // POPULATION_H
