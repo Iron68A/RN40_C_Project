@@ -5,14 +5,23 @@ Algorithmes pour la gestion d'une population (Fichier population.c)
 Entrée : Une liste chainée Population vide : P / Une taille de Population : TaillePop / Longueur d'un individu : longIndiv
 Sortie : Une liste chainée Population composé d'individu 
 
-InitPopulation(population P, int TaillePop, int longIndiv)
+InitPopulation(int TaillePop, int longIndiv) --> population P
+	P = créerpopulation()
 	Pour i allant de 0 à TaillePop faire 
 		AjoutTetePop(P,creerIndividuR(longIndiv))
 		Incrémenter i
 	Fin pour
+	InitPopulation(TaillePop,longIndiv) = P
 Fin 
  
+• Ajouter en tete un Individus dans une population.
 
+AjoutTetePop(Population P,Individu individu) --> Population P
+	elem2 = créerelem2()
+	elem2-->individu = individu
+	elem2-->suivant = P-->premier
+	p-->premier = elem2
+	AjoutTetePop(P,individu) = P
 
 • Trier la liste par Qualité décroissante des Individus au moyen de Quicksort (voir ci-dessous). On utilisera pour cela
 la fonction Qualité définie sur le type abstrait Individu.
