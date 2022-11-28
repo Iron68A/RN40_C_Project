@@ -2,17 +2,17 @@
 #define POPULATION_H
 
 
-typedef struct element2 {
-    Individu individu;
-    struct element *suivant;
-} element;
+typedef struct elementPop {
+    Individu individus;
+    struct elementPop *suivant;
+} elementPop;
 
-typedef element2 Population;
 
-struct Population
+typedef struct Population
 {
+    int nbrIndiv;
     element2 *premier;
-};
+} Population;
 
 
 Population AjoutTetePop(Population population, Individu individu);

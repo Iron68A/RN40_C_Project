@@ -6,6 +6,8 @@
 /**
  * @brief Fichier individu.c, contient les fonctions de manipulation et de création des individus
  * @file individu.c
+ * @author Alexandre BARTHELME 
+ * @date 28 11 2022 
  * 
 */
 
@@ -26,7 +28,7 @@ Individu AjoutTete(Individu indiv, Bit bit){
 //creer un individu itérativement
 Individu creerIndividuT(int longIndiv){
     Individu indiv;
-    srand(time(NULL));
+    
     indiv.premier = NULL;
     int i;
     for(i=0; i<longIndiv; i++){
@@ -36,6 +38,7 @@ Individu creerIndividuT(int longIndiv){
     return indiv;
 }
 //creer un individu récursivement
+/*
 Individu creerIndividuR(int longIndiv){
     Individu indiv;
     srand(time(NULL));
@@ -46,7 +49,7 @@ Individu creerIndividuR(int longIndiv){
         creerIndividuR(longIndiv - 1);
     }
     return indiv;
-}
+}*/
 
 //Mettre un individu dans un tableau poour affichage avec MSB à gauche
 void IndivToTab(Individu indiv, int *tab){
