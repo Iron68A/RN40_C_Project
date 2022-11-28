@@ -1,0 +1,27 @@
+#ifndef POPULATION_H
+#define POPULATION_H
+
+
+typedef struct elementPop {
+    Individu individus;
+    struct elementPop *suivant;
+} elementPop;
+
+
+typedef struct Population
+{
+    int nbrIndiv;
+    element2 *premier;
+} Population;
+
+
+Population AjoutTetePop(Population population, Individu individu);
+Population InitPopulation(int TaillePop, int longIndiv);
+Quicksort( population P);
+diviser(population P, population L1, population L2);
+concat(population L1, population L2);
+
+bestind()
+croiserPop()
+
+#endif // POPULATION_H
