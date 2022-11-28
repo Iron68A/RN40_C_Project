@@ -9,12 +9,6 @@
  * 
 */
 
-
-
-
-
-
-
 //variables globales pour Qualité
 #define A -1
 #define B 1
