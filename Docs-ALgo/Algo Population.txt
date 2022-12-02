@@ -34,7 +34,7 @@ Quicksort( population P) --> Population trié
 	L2 = Créer Population 
 	diviser(P,L1,L2)
 	QuickSort(reste(P)) = QuickSort(L1)
-	QuickSort(reste(p)) = QuickSort(L2);
+	QuickSort(reste(p)) = QuickSort(L2)
 	L1 = Concatener(L1,L2);
 	P = tete(L1);
 	
@@ -58,13 +58,14 @@ Fin
 Entrée : 2 populartions : L1 et  L2
 Sortie : 3 ème population
 
-concat(population L1, population L2) --> populartions  
+concat(population L1, population L2) --> populations  
 Si estVide(L1) alors :
 	concat(L1,L2) = L2
 Sinon Si estVide(L2) alors :
 	concat(L1,L2) = L1
 Sinon : 
 	concat(L1,L2) = AjoutFinPop(L1,concat(L1,  reste(L2)))
+
 
 
 

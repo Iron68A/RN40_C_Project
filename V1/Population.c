@@ -3,6 +3,8 @@
 #include <time.h>
 #include "Individu.h"
 #include "Population.h"
+#define TRUE 1
+#define FALSE 0
 
 /**
  * @brief Fichier population.c, contient les fonctions de manipulation et de création des populations
@@ -17,6 +19,22 @@ Population AjoutTetePop(Population pop, Individu indiv){
     nouveau->indiv = indiv;
     nouveau->suivant = pop.premierPop;
     pop.premierPop = nouveau;
+    return pop;
+}
+Population AjoutqueuePop(Population pop, Individu indiv){
+    elementPop *nouveau = (elementPop *)malloc(sizeof(elementPop));
+    nouveau->indiv = indiv;
+    nouveau->suivant = NULL;
+    if(pop.premierPop == NULL){
+        pop.premierPop = nouveau;
+    }
+    else{
+        elementPop *actuel = pop.premierPop;
+        while(actuel->suivant != NULL){
+            actuel = actuel->suivant;
+        }
+        actuel->suivant = nouveau;
+    }
     return pop;
 }
 
@@ -42,10 +60,27 @@ void afficherPopulation(Population pop){
         while(actuel != NULL){
             printf("Individu %d :  \n", i);
             afficherIndividu(actuel->indiv);
-            printf("Sa valeur decimale est (MSB à droite) : %d ", decode(actuel->indiv));
+            printf("Sa valeur decimale est (MSB a droite) : %d ", decode(actuel->indiv));
             printf("\n");
             actuel = actuel->suivant;
             i++;
         }
     }
+}
+
+Population diviser(Population pop){
+    Population pop1 = creerPopulation(0, 4);
+    Population pop2 = creerPopulation(0, 4);
+    elementPop *actuel = pop.premierPop;
+    while(actuel !=NULL){
+        if(actuel->indiv.qualite < pop.premierPop->suivant->indiv.qualite){
+            pop1 = AjoutTetePop(pop1, actuel->indiv);
+        }
+        else{
+            pop2 = AjoutTetePop(pop2, actuel->indiv);
+        }
+        actuel = pop.premierPop->suivant;
+    }
+    return pop1;
+    return pop2;
 }

@@ -6,7 +6,6 @@
 #define NBINDIV 6
 //main pour test
 int main() {
-    //int alea = rand()%10+1;
     //Individu indiv = creerIndividuT(NBINDIV);
     //afficherIndividu(indiv);
     //int tab[NBINDIV];
@@ -14,8 +13,16 @@ int main() {
     //AfficherIndivMSB_Gauche(tab, NBINDIV);
     //printf("decode : %d\n", decode(indiv));
     //printf("Qualite : %f\n", calculQualiteIndividu(indiv));
-    Population pop = creerPopulation(5, NBINDIV);
+    Population pop = creerPopulation(4, NBINDIV);
     afficherPopulation(pop);
+    //faire le quicksort de pop :
+    
+    Population L1, L2 = diviser(pop);
+    printf("--------------L1  \n");
+    afficherPopulation(L1);
+    printf("----------------- L2 :\n");
+    afficherPopulation(L2);
+    printf("--------- \n");
 
     return 0;
 }

@@ -12,6 +12,7 @@ typedef struct element {
 typedef struct Individu {
     element *premier;
     int longIndiv;
+    float qualite;
 } Individu;
 
 

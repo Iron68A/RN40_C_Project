@@ -35,6 +35,7 @@ Individu creerIndividuT(int longIndiv){
         int bit = rand()%2;
         indiv = AjoutTete(indiv, bit);
     }
+    indiv.qualite = calculQualiteIndividu(indiv);
     return indiv;
 }
 //creer un individu récursivement
@@ -90,6 +91,8 @@ void afficherIndividu(Individu indiv){
             printf("%d", actuel->bits);
             actuel = actuel->suivant;
         }
+        printf("\n");
+        printf("sa qualite est : %f\n", indiv.qualite);
         printf("\n");
     }
 }
