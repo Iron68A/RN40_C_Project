@@ -54,35 +54,41 @@ void afficherListe(liste l){
     }
 }
 
-void diviser(liste l){
-    liste l1, l2;
-    if(l.premier == NULL){
-        printf("La liste est vide\n");
-    }
-    else{
-        while(l.premier != NULL){
-            int a = l.premier->val;
-            int b = l.premier->suivant->val;
-            //printf("a = %d et b = %d \n", a, b);
-            if(a >= b){
-                printf("a > b , a= %d b= %d\n", a, b);
+//quick sort with linked list as input and 2 linked list as output (one for the smaller values and one for the bigger values)
+void quickSort(liste *l, liste *l1, liste *l2){
+    if(l->premier != NULL){
+        element *pivot = l->premier;
+        element *actuel = l->premier;
+        while(actuel != NULL){
+            if(actuel->val < pivot->val){
+                *l1 = ajoutQueue(*l1, actuel->val);
             }
-            else{
-                printf("a < b , a= %d b= %d\n", a, b);
+            else if(actuel->val > pivot->val){
+                *l2 = ajoutQueue(*l2, actuel->val);
             }
-            l.premier = l.premier->suivant;
+            actuel = actuel->suivant;
+            pivot = l->premier;
         }
     }
-
 }
 
 int main(){
     liste l = creerListe(10);
     afficherListe(l);
-    printf("---------------------\n");
-    printf("Liste divisee : \n");
-    diviser(l);
-    printf("---------------------\n");
+    liste l1;
+    l1.premier = NULL;
+    liste l2;
+    l2.premier = NULL;
+    quickSort(&l, &l1, &l2);
+    printf("Liste 1 \n");
+    afficherListe(l1);
+    printf("-Liste2 \n");
+    afficherListe(l2);
     return 0;
-
 }
+
+
+
+
+
+

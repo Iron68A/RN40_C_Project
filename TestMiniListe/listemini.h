@@ -14,7 +14,6 @@ liste ajoutTete(liste l, int val);
 liste ajoutQueue(liste l, int val);
 void afficherListe(liste l);
 liste creerListe(int taille);
-void diviser(liste l);
-
+void quickSort(liste *l, liste *l1, liste *l2);
 
 #endif /* listemini_h */
