@@ -13,16 +13,16 @@ int main() {
     //AfficherIndivMSB_Gauche(tab, NBINDIV);
     //printf("decode : %d\n", decode(indiv));
     //printf("Qualite : %f\n", calculQualiteIndividu(indiv));
-    Population pop = creerPopulation(4, NBINDIV);
+    Population pop = creerPopulation(5, NBINDIV);
     afficherPopulation(pop);
+    //affqualite(pop);
     //faire le quicksort de pop :
     
-    Population L1, L2 = diviser(pop);
-    printf("--------------L1  \n");
-    afficherPopulation(L1);
-    printf("----------------- L2 :\n");
-    afficherPopulation(L2);
-    printf("--------- \n");
+    Population P1 = diviser(pop);
+    printf("--------------P1  \n");
+    //affqualite(P1);
+    afficherPopulation(P1);
+
 
     return 0;
 }

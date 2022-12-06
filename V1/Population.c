@@ -68,19 +68,59 @@ void afficherPopulation(Population pop){
     }
 }
 
+void affqualite(Population pop){
+    if(pop.premierPop == NULL){
+        printf("La population est vide\n");
+    }
+    else{
+        elementPop *actuel = pop.premierPop;
+        int i=0;
+        while(actuel != NULL){
+            printf("Individu %d :  \n", i);
+            printf("Sa qualite est : %f ", calculQualiteIndividu(actuel->indiv));
+            printf("\n");
+            actuel = actuel->suivant;
+            i++;
+        }
+    }
+}
+
 Population diviser(Population pop){
-    Population pop1 = creerPopulation(0, 4);
-    Population pop2 = creerPopulation(0, 4);
-    elementPop *actuel = pop.premierPop;
-    while(actuel !=NULL){
-        if(actuel->indiv.qualite < pop.premierPop->suivant->indiv.qualite){
-            pop1 = AjoutTetePop(pop1, actuel->indiv);
+    if(pop.premierPop == NULL || pop.premierPop->suivant == NULL){
+        return pop;
+    }
+    else{
+        elementPop *pivot = pop.premierPop;
+        Population pop1, pop2;
+        pop1.premierPop = NULL;
+        pop2.premierPop = NULL;
+        elementPop *actuel = pop.premierPop->suivant;
+        while(actuel != NULL){
+            if(actuel->indiv.qualite < pivot->indiv.qualite){
+                pop1 = AjoutTetePop(pop1, actuel->indiv);
+            }
+            else{
+                pop2 = AjoutTetePop(pop2, actuel->indiv);
+            }
+            actuel = actuel->suivant;
+        }
+        pop1 = diviser(pop1);
+        pop2 = diviser(pop2);
+        if(pop1.premierPop == NULL){
+            pop1.premierPop = pivot;
+            pivot->suivant = pop2.premierPop;
+            return pop1;
         }
         else{
-            pop2 = AjoutTetePop(pop2, actuel->indiv);
+            elementPop *actuel = pop1.premierPop;
+            while(actuel->suivant != NULL){
+                actuel = actuel->suivant;
+            }
+            actuel->suivant = pivot;
+            pivot->suivant = pop2.premierPop;
+            return pop1;
         }
-        actuel = pop.premierPop->suivant;
     }
-    return pop1;
-    return pop2;
 }
+
+
