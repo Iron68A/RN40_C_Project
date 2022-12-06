@@ -54,37 +54,55 @@ void afficherListe(liste l){
     }
 }
 
-//quick sort with linked list as input and 2 linked list as output (one for the smaller values and one for the bigger values)
-void quickSort(liste *l, liste *l1, liste *l2){
-    if(l->premier != NULL){
-        element *pivot = l->premier;
-        element *actuel = l->premier;
+//trier la liste chainée en utilisant la méthode de tri quicksort (diviser pour régner)
+liste trie(liste l){
+    if(l.premier == NULL || l.premier->suivant == NULL){
+        return l;
+    }
+    else{
+        element *pivot = l.premier;
+        liste l1, l2;
+        l1.premier = NULL;
+        l2.premier = NULL;
+        element *actuel = l.premier->suivant;
         while(actuel != NULL){
             if(actuel->val < pivot->val){
-                *l1 = ajoutQueue(*l1, actuel->val);
+                l1 = ajoutTete(l1, actuel->val);
             }
-            else if(actuel->val > pivot->val){
-                *l2 = ajoutQueue(*l2, actuel->val);
+            else{
+                l2 = ajoutTete(l2, actuel->val);
             }
             actuel = actuel->suivant;
-            pivot = l->premier;
+        }
+        l1 = trie(l1);
+        l2 = trie(l2);
+        if(l1.premier == NULL){
+            l1.premier = pivot;
+            pivot->suivant = l2.premier;
+            return l1;
+        }
+        else{
+            element *actuel = l1.premier;
+            while(actuel->suivant != NULL){
+                actuel = actuel->suivant;
+            }
+            actuel->suivant = pivot;
+            pivot->suivant = l2.premier;
+            return l1;
         }
     }
 }
 
+
+
 int main(){
     liste l = creerListe(10);
     afficherListe(l);
-    liste l1;
-    l1.premier = NULL;
-    liste l2;
-    l2.premier = NULL;
-    quickSort(&l, &l1, &l2);
-    printf("Liste 1 \n");
+    printf("---------------- \n");
+    liste l1 = trie(l);
     afficherListe(l1);
-    printf("-Liste2 \n");
-    afficherListe(l2);
     return 0;
+
 }
 
 
