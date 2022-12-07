@@ -28,7 +28,6 @@ Individu AjoutTete(Individu indiv, Bit bit){
 //creer un individu itérativement
 Individu creerIndividuT(int longIndiv){
     Individu indiv;
-    
     indiv.premier = NULL;
     int i;
     for(i=0; i<longIndiv; i++){
@@ -129,5 +128,28 @@ float puissance(float x, int n) {
     }
 }
 
+//intervertir les elements de deux individus selon une probabilité p pour chaque bit (tirage aléatoire avec comparaison à p)
+Individu croisement(Individu indiv1, Individu indiv2, float pCroise){
+    Individu indiv3;
+    indiv3.premier = NULL;
+    element *actuel1 = indiv1.premier;
+    element *actuel2 = indiv2.premier;
+    while(actuel1 != NULL && actuel2 != NULL){
+        srand(time(NULL));
+        //chiffre aleatoire entre 1 et 100 ( proba de croisement )
+        float proba = rand() % 1 + 100;
+        if(proba < pCroise){
+            indiv3 = AjoutTete(indiv3, actuel1->bits);
+        }
+        else{
+            indiv3 = AjoutTete(indiv3, actuel2->bits);
+        }
+        actuel1 = actuel1->suivant;
+        actuel2 = actuel2->suivant;
+    }
+    indiv3.qualite = calculQualiteIndividu(indiv3);
+    return indiv3;
+    
 
+}
 
