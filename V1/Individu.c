@@ -136,8 +136,8 @@ Individu croisement(Individu indiv1, Individu indiv2, float pCroise){
     element *actuel2 = indiv2.premier;
     while(actuel1 != NULL && actuel2 != NULL){
         srand(time(NULL));
-        //chiffre aleatoire entre 1 et 100 ( proba de croisement )
-        float proba = rand() % 1 + 100;
+        //chiffre aleatoire entre 0 et 1 ( proba de croisement )
+        float proba= rand()%2;
         if(proba < pCroise){
             indiv3 = AjoutTete(indiv3, actuel1->bits);
         }

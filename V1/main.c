@@ -4,7 +4,7 @@
 #include "Individu.h"
 #include "Population.h"
 #define NBINDIV 6
-#define PCROISE 42
+#define PCROISE 0.5
 //main pour test
 int main() {
     srand(time(NULL));//srand à chaque itération pour avoir des bits différents
