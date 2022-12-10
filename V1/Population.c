@@ -58,10 +58,11 @@ void afficherPopulation(Population pop){
         elementPop *actuel = pop.premierPop;
         int i=0;
         while(actuel != NULL){
+            printf(" \n");
             printf("Individu %d :  \n", i);
             afficherIndividu(actuel->indiv);
             printf("Sa valeur decimale est (MSB a droite) : %d ", decode(actuel->indiv));
-            printf("\n");
+            printf(" \n");
             actuel = actuel->suivant;
             i++;
         }
@@ -96,7 +97,7 @@ Population diviser(Population pop){
         pop2.premierPop = NULL;
         elementPop *actuel = pop.premierPop->suivant;
         while(actuel != NULL){
-            if(actuel->indiv.qualite < pivot->indiv.qualite){
+            if(actuel->indiv.qualite > pivot->indiv.qualite){
                 pop1 = AjoutTetePop(pop1, actuel->indiv);
             }
             else{
@@ -121,4 +122,30 @@ Population diviser(Population pop){
     }
 }
 
+//Fonction qui creer une population constitué des "select" meilleurs individus de la population, 
+//qui se repète jusqu'à atteindre la taille de la population
+
+Population meilleur(Population pop, int select, int taillePop){
+    Population pop1;
+    pop1.premierPop = NULL;
+    if(pop.premierPop == NULL){
+        return pop1;
+    }
+    else{
+        elementPop *actuel = pop.premierPop;
+        int i=0;
+        while(actuel != NULL && i<select){
+            pop1 = AjoutqueuePop(pop1, actuel->indiv);
+            actuel = actuel->suivant;
+            i++;
+        }
+        actuel = pop1.premierPop;
+        while(i<taillePop){
+            pop1 = AjoutqueuePop(pop1, actuel->indiv);
+            actuel = actuel->suivant;
+            i++;
+        }
+        return pop1;
+    }
+}
 

@@ -3,7 +3,7 @@
 #include <time.h>
 #include "Individu.h"
 #include "Population.h"
-#define NBINDIV 6
+#define LGINDIV 6
 #define PCROISE 0.5
 //main pour test
 int main() {
@@ -11,32 +11,34 @@ int main() {
     /**
      * INDIVIDU
     */
-    Individu indiv = creerIndividuT(NBINDIV);
-    //Individu indiv2 = creerIndividuT(NBINDIV);
-    afficherIndividu(indiv);
+    //Individu indiv = creerIndividuT(LGINDIV);
+    //Individu indiv2 = creerIndividuT(LGINDIV);
+    //afficherIndividu(indiv);
     //afficherIndividu(indiv2);
     //Individu indiv3 = croisement(indiv, indiv2, PCROISE);
     //printf("individu 3 (croise) : \n");
     //afficherIndividu(indiv3);
-    //int tab[NBINDIV];
+    //int tab[LGINDIV];
     //IndivToTab(indiv, tab);
-    //AfficherIndivMSB_Gauche(tab, NBINDIV);
+    //AfficherIndivMSB_Gauche(tab, LGINDIV);
     //printf("decode : %d\n", decode(indiv));
     //printf("Qualite : %f\n", calculQualiteIndividu(indiv));
 
     /**
      * POPULATION
     */
-    //Population pop = creerPopulation(5, NBINDIV);
+    //Population pop = creerPopulation(5, LGINDIV);
     //afficherPopulation(pop);
     //affqualite(pop);
     //faire le quicksort de pop :
     
     //Population P1 = diviser(pop);
-    printf("--P1 triee  \n");
-    //affqualite(P1);
+    //printf("--P1 triee  \n");
     //afficherPopulation(P1);
-
+    //affqualite(P1);
+    //printf("--Pop meilleur  \n");
+    //Population popMeilleur = meilleur(P1,3, LGINDIV);
+    //afficherPopulation(popMeilleur);
 
     return 0;
 }

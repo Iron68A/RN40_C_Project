@@ -18,7 +18,7 @@ Population AjoutqueuePop(Population pop, Individu indiv);
 void afficherPopulation(Population pop);
 Population diviser(Population population);
 void affqualite(Population pop);
-
+Population meilleur(Population popTriee, int select, int taillePop);
 
 
 

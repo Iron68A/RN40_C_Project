@@ -92,7 +92,6 @@ void afficherIndividu(Individu indiv){
         }
         printf("\n");
         printf("sa qualite est : %f\n", indiv.qualite);
-        printf("\n");
     }
 }
 
@@ -151,4 +150,5 @@ Individu croisement(Individu indiv1, Individu indiv2, float pCroise){
     
 
 }
+
 
