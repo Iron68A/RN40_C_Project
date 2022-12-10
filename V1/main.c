@@ -11,9 +11,9 @@ int main() {
     /**
      * INDIVIDU
     */
-    //Individu indiv = creerIndividuT(NBINDIV);
+    Individu indiv = creerIndividuT(NBINDIV);
     //Individu indiv2 = creerIndividuT(NBINDIV);
-    //afficherIndividu(indiv);
+    afficherIndividu(indiv);
     //afficherIndividu(indiv2);
     //Individu indiv3 = croisement(indiv, indiv2, PCROISE);
     //printf("individu 3 (croise) : \n");
@@ -27,14 +27,14 @@ int main() {
     /**
      * POPULATION
     */
-    Population pop = creerPopulation(5, NBINDIV);
+    //Population pop = creerPopulation(5, NBINDIV);
     //afficherPopulation(pop);
-    affqualite(pop);
+    //affqualite(pop);
     //faire le quicksort de pop :
     
-    Population P1 = diviser(pop);
+    //Population P1 = diviser(pop);
     printf("--P1 triee  \n");
-    affqualite(P1);
+    //affqualite(P1);
     //afficherPopulation(P1);
 
 

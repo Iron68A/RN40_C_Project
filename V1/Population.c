@@ -108,8 +108,6 @@ Population diviser(Population pop){
         pop2 = diviser(pop2);
         if(pop1.premierPop == NULL){
             pop1.premierPop = pivot;
-            pivot->suivant = pop2.premierPop;
-            return pop1;
         }
         else{
             elementPop *actuel = pop1.premierPop;
@@ -117,9 +115,9 @@ Population diviser(Population pop){
                 actuel = actuel->suivant;
             }
             actuel->suivant = pivot;
-            pivot->suivant = pop2.premierPop;
-            return pop1;
         }
+        pivot->suivant = pop2.premierPop;     
+        return pop1;
     }
 }
 

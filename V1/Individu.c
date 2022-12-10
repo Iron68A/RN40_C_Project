@@ -100,7 +100,7 @@ void afficherIndividu(Individu indiv){
 
 //fonction de conversion d'un individu en entier
 int decode(Individu indiv){
-    int i,res = 0;
+    int i = 0,res = 0;
     element *actuel = indiv.premier;
     while(actuel != NULL){
         res += actuel->bits * puissance(2,i);
