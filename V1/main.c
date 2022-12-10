@@ -27,14 +27,14 @@ int main() {
     /**
      * POPULATION
     */
-    //Population pop = creerPopulation(5, NBINDIV);
+    Population pop = creerPopulation(5, NBINDIV);
     //afficherPopulation(pop);
-    //affqualite(pop);
+    affqualite(pop);
     //faire le quicksort de pop :
     
-    //Population P1 = diviser(pop);
-    //printf("--P1 triee  \n");
-    //affqualite(P1);
+    Population P1 = diviser(pop);
+    printf("--P1 triee  \n");
+    affqualite(P1);
     //afficherPopulation(P1);
 
 
