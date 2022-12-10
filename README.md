@@ -14,3 +14,7 @@ Infos : Bits = Individu
 
 
 # II) Type abstrait Population 
+Population : liste d'individu (elle meme constitué de bits) et une taille 
+- Initialiser la pop aléatoirement : ok 
+- Quicksort : Ok 
+- 
