@@ -5,69 +5,86 @@ Algorithmes pour la gestion d'une population (Fichier population.c)
 Entrée : Une liste chainée Population vide : P / Une taille de Population : TaillePop / Longueur d'un individu : longIndiv
 Sortie : Une liste chainée Population composé d'individu 
 
-InitPopulation(int TaillePop, int longIndiv) --> population P
+creerPopulation(int TaillePop, int longIndiv) --> population P
 	P = créerpopulation()
 	Pour i allant de 0 à TaillePop faire 
 		AjoutTetePop(P,creerIndividuR(longIndiv))
 		Incrémenter i
 	Fin pour
-	InitPopulation(TaillePop,longIndiv) = P
+	creerPopulation(TaillePop,longIndiv) = P
 Fin 
  
 • Ajouter en tete un Individus dans une population.
 
-AjoutTetePop(Population P,Individu individu) --> Population P
-	elem2 = créerelem2()
-	elem2-->individu = individu
-	elem2-->suivant = P-->premier
-	p-->premier = elem2
+AjoutTetePop(P : Population ,individu : Individu ) --> P : Population
+	elementPop = créerElementPop()
+	individu(elementPop) = individu
+	succ(elementPop) = tete(P)
+	tete(p) = elem2
 	AjoutTetePop(P,individu) = P
+
+• Ajouter en queu un Individus dans une population.
+AjoutqueuePop(pop : Population ,indiv : Individu )
+	elementPop = créerElementPop()
+	individu(elementPop) = individu
+	succ(elementPop) = indéfini
+	si estvide(tete(pop)) alors : 
+		tete(pop) = elementPop
+	sinon
+		elementPop2 = créerElementPop()
+		elementPop2 = tete(pop)
+		tantque !estvide(succ(elementPop2)) faire 
+			elementPop2 = succ(elementPop2)
+		fintantque
+		succ(elementPop2) = elementPop
+	finsi
+	AjoutqueuePop(pop,indiv) = pop
 
 • Trier la liste par Qualité décroissante des Individus au moyen de Quicksort (voir ci-dessous). On utilisera pour cela
 la fonction Qualité définie sur le type abstrait Individu.
 
-Entrée : Une population : P
+Entrée : Une population : pop
 Sortie : Une population triée 
-Quicksort( population P) --> Population trié
-	si estVide(P) alors Quicksort(P) = P
-	L1 = Créer Population 
-	L2 = Créer Population 
-	diviser(P,L1,L2)
-	QuickSort(reste(P)) = QuickSort(L1)
-	QuickSort(reste(p)) = QuickSort(L2)
-	L1 = Concatener(L1,L2);
-	P = tete(L1);
-	
-
-•Créer deux listes a partir d'une autre liste 
-
-Entrée : Deux listes de populations a remplire : L1 et L2 / La liste de population avec des individus : P
-Sortie : Une population triée 
-diviser(population P, population L1, population L2)
-	temp = tete(P) 
-	tant que ! estNull(temp) faire :
-		si calculQualiteIndividu(individu(temp))<=calculQualiteIndividu(individu(P)) alors :
-			l1.AjoutFin(individu(temp))
+Quicksort( pop : population) --> Population trié
+	si estVide(P) ou estVide(succ(P)) alors Quicksort(P) = P alors :
+		Quicksort(pop) = pop
+	Sinon :
+		pivot = créerElementPop()
+		pivot = tete(pop)
+		pop1 = creerPopulation() 
+		pop2 = creerPopulation()
+		actuel = créerElementPop()
+		actuel = succ(pop)
+		tantque !estvide(actuel) faire :
+			si qualité(individu(actuel)) > qualité(individu(pivot)) faire :
+				pop1 = AjoutTetePop(pop1, individu(actuel));
+			sinon :
+				pop2 = AjoutTetePop(pop2, individu(actuel));
+			finsi
+			actuel = succ(actuel)
+		fintantque
+		pop1 = diviser(pop1)
+		pop2 = diviser(pop2)
+		si estvide(tete(pop1)) alors:
+			tete(pop1)=pivot
 		sinon :
-			l2.AjoutFin(individu(temp))
-	Fin tant que
-Fin
-
-•Concatener deux listes 
-
-Entrée : 2 populartions : L1 et  L2
-Sortie : 3 ème population
-
-concat(population L1, population L2) --> populations  
-Si estVide(L1) alors :
-	concat(L1,L2) = L2
-Sinon Si estVide(L2) alors :
-	concat(L1,L2) = L1
-Sinon : 
-	concat(L1,L2) = AjoutFinPop(L1,concat(L1,  reste(L2)))
+			actuel = tete(pop1)
+			tantque !estvide(succ(actuel)) faire :
+				actuel = succ(actuel)
+			fintantque
+			succ(actuel) = pivot
+		finsi
+		succ(pivot) = tete(pop2)
+		Quicksort(pop) = pop1
+	finsi
 
 
-
+• afficherPopulation
+• affqualite
+• Meilleur
 
 • Sélectionner les meilleurs Individus de la Population en tronquant la liste et en la complétant par recopie des
+
+
 tSelect premiers éléments.
+• Croiser la pop
