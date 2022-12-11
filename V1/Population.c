@@ -86,7 +86,7 @@ void affqualite(Population pop){
     }
 }
 
-Population diviser(Population pop){
+Population quicksort(Population pop){
     if(pop.premierPop == NULL || pop.premierPop->suivant == NULL){
         return pop;
     }
@@ -105,8 +105,8 @@ Population diviser(Population pop){
             }
             actuel = actuel->suivant;
         }
-        pop1 = diviser(pop1);
-        pop2 = diviser(pop2);
+        pop1 = quicksort(pop1);
+        pop2 = quicksort(pop2);
         if(pop1.premierPop == NULL){
             pop1.premierPop = pivot;
         }

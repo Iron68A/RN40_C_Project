@@ -32,7 +32,7 @@ int main() {
     //affqualite(pop);
     //faire le quicksort de pop :
     
-    //Population P1 = diviser(pop);
+    //Population P1 = quicksort(pop);
     //printf("--P1 triee  \n");
     //afficherPopulation(P1);
     //affqualite(P1);

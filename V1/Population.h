@@ -16,7 +16,7 @@ Population creerPopulation(int taillePop,int longIndiv);
 Population AjoutTetePop(Population pop, Individu indiv);
 Population AjoutqueuePop(Population pop, Individu indiv);
 void afficherPopulation(Population pop);
-Population diviser(Population population);
+Population quicksort(Population population);
 void affqualite(Population pop);
 Population meilleur(Population popTriee, int select, int taillePop);
 
