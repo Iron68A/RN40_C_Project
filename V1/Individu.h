@@ -15,13 +15,16 @@ typedef struct Individu {
     float qualite;
 } Individu;
 
-
+//Primitives des listes chainées
 Individu AjoutTete(Individu indiv, Bit bit);
 Individu creerIndividuR(int longIndiv);
 Individu creerIndividuT(int longIndiv);
+int estVide(Individu indiv);
+//Fonctions d'affichage (pour le débugage et la vérification)
 void afficherIndividu(Individu indiv);
 void IndivToTab(Individu indiv, int *tab);
 void AfficherIndivMSB_Gauche(int *tab, int longIndiv);
+//fonctions de manipulation
 int decode(Individu Indiv);
 float calculQualiteIndividu(Individu indiv);
 float puissance(float x, int n);

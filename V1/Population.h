@@ -15,6 +15,7 @@ typedef struct Population{
 Population creerPopulation(int taillePop,int longIndiv);
 Population AjoutTetePop(Population pop, Individu indiv);
 Population AjoutqueuePop(Population pop, Individu indiv);
+int estVidePop(Population pop);
 void afficherPopulation(Population pop);
 Population quicksort(Population population);
 void affqualite(Population pop);

@@ -49,22 +49,20 @@ Quicksort( pop : population) --> Population trié
 	si estVide(P) ou estVide(succ(P)) alors Quicksort(P) = P alors :
 		Quicksort(pop) = pop
 	Sinon :
-		pivot = créerElementPop()
 		pivot = tete(pop)
 		pop1 = creerPopulation() 
 		pop2 = creerPopulation()
-		actuel = créerElementPop()
 		actuel = succ(pop)
 		tantque !estvide(actuel) faire :
 			si qualité(individu(actuel)) > qualité(individu(pivot)) faire :
-				pop1 = AjoutTetePop(pop1, individu(actuel));
+				AjoutTetePop(pop1, individu(actuel));
 			sinon :
-				pop2 = AjoutTetePop(pop2, individu(actuel));
+				AjoutTetePop(pop2, individu(actuel));
 			finsi
 			actuel = succ(actuel)
 		fintantque
-		pop1 = diviser(pop1)
-		pop2 = diviser(pop2)
+		pop1 = quicksort(pop1)
+		pop2 = quicksort(pop2)
 		si estvide(tete(pop1)) alors:
 			tete(pop1)=pivot
 		sinon :

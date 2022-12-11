@@ -54,9 +54,22 @@ Population creerPopulation(int taillePop, int longIndiv){
     return pop;
 }
 
+int estVidePop(Population pop){
+    if(pop.premierPop == NULL){
+        return TRUE;
+    }
+    else{
+        return FALSE;
+    }
+}
+
+/**
+ * Fonctions d'affichage de la population
+*/
+
 //Affichage d'une population (Tous les individus, leur valeur décimale et leur qualité)
 void afficherPopulation(Population pop){
-    if(pop.premierPop == NULL){
+    if(estVidePop(pop)){
         printf("La population est vide\n");
     }
     else{
@@ -76,7 +89,7 @@ void afficherPopulation(Population pop){
 
 //Affichage de la qualité de chaque individu de la population (Uniquement pour les tests et conforts de lecture)
 void affqualite(Population pop){
-    if(pop.premierPop == NULL){
+    if(estVidePop(pop)){
         printf("La population est vide\n");
     }
     else{
@@ -92,6 +105,9 @@ void affqualite(Population pop){
     }
 }
 
+/**
+ * Fonctions de manipulation de la population
+*/
 
 /**
  * QUICKSORT : 
@@ -100,7 +116,7 @@ void affqualite(Population pop){
  * Puis concaténantion les deux sous-populations triées
 */
 Population quicksort(Population pop){
-    if(pop.premierPop == NULL || pop.premierPop->suivant == NULL){
+    if(estVidePop(pop)|| pop.premierPop->suivant == NULL){
         return pop;
     }
     else{
@@ -120,7 +136,7 @@ Population quicksort(Population pop){
         }
         pop1 = quicksort(pop1);
         pop2 = quicksort(pop2);
-        if(pop1.premierPop == NULL){
+        if(estVidePop(pop1)){
             pop1.premierPop = pivot;
         }
         else{
@@ -141,7 +157,7 @@ Population quicksort(Population pop){
 Population meilleur(Population pop, int select, int taillePop){
     Population pop1;
     pop1.premierPop = NULL;
-    if(pop.premierPop == NULL){
+    if(estVidePop(pop)){
         return pop1;
     }
     else{

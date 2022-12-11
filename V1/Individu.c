@@ -14,9 +14,13 @@
 //variables globales pour Qualité
 #define A -1
 #define B 1
-#define longIndivQ 8
-
-//Creer les bits d'un individu
+#define LONGINDIVQ 8
+#define TRUE 1
+#define FALSE 0
+/**
+ * Primitives des listes chainées
+*/
+//Creer les bits d'un individu (un maillon de la chaine)
 Individu AjoutTete(Individu indiv, Bit bit){
     element *nouveau = (element *)malloc(sizeof(element));
     nouveau->bits = bit;
@@ -51,9 +55,21 @@ Individu creerIndividuR(int longIndiv){
     return indiv;
 }*/
 
+int estVide(Individu indiv){
+    if(indiv.premier == NULL){
+        return TRUE;
+    }
+    else{
+        return FALSE;
+    }
+}
+/**
+ * Fonctions d'affichage (pour le débugage et la vérification)
+*/
+
 //Mettre un individu dans un tableau poour affichage avec MSB à gauche
 void IndivToTab(Individu indiv, int *tab){
-    if(indiv.premier == NULL){
+    if(estVide(indiv)){
         printf("L'individu est vide\n");
     }
     else{
@@ -80,7 +96,7 @@ void AfficherIndivMSB_Gauche(int *tab, int longIndiv){
 
 //afficher individu
 void afficherIndividu(Individu indiv){
-    if(indiv.premier == NULL){
+    if(estVide(indiv)){
         printf("L'individu est vide\n");
     }
     else{
@@ -96,9 +112,11 @@ void afficherIndividu(Individu indiv){
     }
 }
 
+/**
+ * Fonctions de manipulation des individus
+*/
 
-
-//fonction de conversion d'un individu en entier
+//fonction de conversion d'un individu en entier (sa valeur )
 int decode(Individu indiv){
     int i = 0,res = 0;
     element *actuel = indiv.premier;
@@ -113,7 +131,7 @@ int decode(Individu indiv){
 //calculer la qualité d'un individu
 float calculQualiteIndividu(Individu indiv) {
     int x = decode(indiv);
-    float fct = (x/puissance(2,longIndivQ))*(B-A)+A;
+    float fct = (x/puissance(2,LONGINDIVQ))*(B-A)+A;
     float res = fct * fct;
     return -res;
 }
@@ -129,6 +147,9 @@ float puissance(float x, int n) {
 
 //intervertir les elements de deux individus selon une probabilité p pour chaque bit (tirage aléatoire avec comparaison à p)
 Individu croisement(Individu indiv1, Individu indiv2, float pCroise){
+    if(estVide(indiv1) || estVide(indiv2)){
+        printf("L'un des individus est vide\n");
+    }
     Individu indiv3;
     indiv3.premier = NULL;
     element *actuel1 = indiv1.premier;
