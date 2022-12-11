@@ -11,16 +11,16 @@ int main() {
     /**
      * INDIVIDU
     */
-    //Individu indiv = creerIndividuT(LGINDIV);
+    Individu indiv = creerIndividuT(LGINDIV);
     //Individu indiv2 = creerIndividuT(LGINDIV);
-    //afficherIndividu(indiv);
+    afficherIndividu(indiv);
     //afficherIndividu(indiv2);
     //Individu indiv3 = croisement(indiv, indiv2, PCROISE);
     //printf("individu 3 (croise) : \n");
     //afficherIndividu(indiv3);
-    //int tab[LGINDIV];
-    //IndivToTab(indiv, tab);
-    //AfficherIndivMSB_Gauche(tab, LGINDIV);
+    int tab[LGINDIV];
+    IndivToTab(indiv, tab);
+    AfficherIndivMSB_Gauche(tab, LGINDIV);
     //printf("decode : %d\n", decode(indiv));
     //printf("Qualite : %f\n", calculQualiteIndividu(indiv));
 

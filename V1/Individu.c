@@ -92,6 +92,7 @@ void afficherIndividu(Individu indiv){
         }
         printf("\n");
         printf("sa qualite est : %f\n", indiv.qualite);
+        printf("sa valeur decodee est : %d\n", decode(indiv));
     }
 }
 

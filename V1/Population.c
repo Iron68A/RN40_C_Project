@@ -14,6 +14,9 @@
  * 
 */
 
+/**
+ * Primitives des listes chainées
+*/
 Population AjoutTetePop(Population pop, Individu indiv){
     elementPop *nouveau = (elementPop *)malloc(sizeof(elementPop));
     nouveau->indiv = indiv;
@@ -38,6 +41,7 @@ Population AjoutqueuePop(Population pop, Individu indiv){
     return pop;
 }
 
+//Création d'une population aléatoire de taille taillePop avec des individus de longueur longIndiv
 Population creerPopulation(int taillePop, int longIndiv){
     Population pop;
     pop.premierPop = NULL;
@@ -50,6 +54,7 @@ Population creerPopulation(int taillePop, int longIndiv){
     return pop;
 }
 
+//Affichage d'une population (Tous les individus, leur valeur décimale et leur qualité)
 void afficherPopulation(Population pop){
     if(pop.premierPop == NULL){
         printf("La population est vide\n");
@@ -69,6 +74,7 @@ void afficherPopulation(Population pop){
     }
 }
 
+//Affichage de la qualité de chaque individu de la population (Uniquement pour les tests et conforts de lecture)
 void affqualite(Population pop){
     if(pop.premierPop == NULL){
         printf("La population est vide\n");
@@ -86,6 +92,13 @@ void affqualite(Population pop){
     }
 }
 
+
+/**
+ * QUICKSORT : 
+ * Fonction qui trie une population en fonction de la qualité de chaque individu, 
+ * créant ainsi une population triée en divisant la population en deux sous-populations de manière récursive
+ * Puis concaténantion les deux sous-populations triées
+*/
 Population quicksort(Population pop){
     if(pop.premierPop == NULL || pop.premierPop->suivant == NULL){
         return pop;
