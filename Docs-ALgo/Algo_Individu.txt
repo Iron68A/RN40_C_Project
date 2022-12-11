@@ -48,3 +48,45 @@ fonction = (x/2^longIndiv)*(B-A)+A
 Qualité = -(fonction^2)
 renvoyer Qualité
 
+//Mettre un individu dans un tableau poour affichage avec MSB à gauche
+Require: Individu Indiv
+Ensure: Tableau d'entier 
+
+IndivToTab(indiv : Indiviu) --> Tableau d'entier 
+	si estvide(tete(Indiv)) alors :
+		Afficher("L'individu est vide")
+	Sinon :
+		element actuel = tete(Indiv)
+		i=0
+		tant que !estvide(actuel) faire :
+			tab = ajouterTab(i,actuel.bits) 
+			actuel = succ(actuel)
+			i = i + 1
+		Fintantque
+	IndivToTab(Indiv) = tab
+	Finsi
+  
+  //afficher le tableau inverse
+  Require: Tableau d'entier : tab / int : longIndiv
+Ensure: Affiche dans la console 
+	
+AfficherIndivMSB_Gauche(tab: Tableau d'entier, int : longIndiv))
+	i = 0
+	Afficher("L'individu est ( MSB a gauche, inverse de individu) : ") 
+	Pour i = longIndiv-1 et i>=0 faire
+		Aficher(tab[i])
+	FinPour
+
+
+
+Lexique :
+estvide() : Vérifie si un Individu est vide 
+tete(Indiv) : le premier maillon de la chaˆıne de bits (element ∗ premier dans
+la d´efinition)
+Afficher() : Permet d'afficher quelque chose dans la console
+Element : un maillon de la chaine de bits
+succ(nouveau) : le bits suivant de la chaıne
+ajouterTab(position,valeur) = Ajouter une valeur à une position donné 
+
+//intervertir les elements de deux individus selon une probabilité p pour chaque bit (tirage aléatoire avec comparaison à p)
+
