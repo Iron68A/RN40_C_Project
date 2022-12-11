@@ -46,7 +46,7 @@ la fonction Qualité définie sur le type abstrait Individu.
 Entrée : Une population : pop
 Sortie : Une population triée 
 Quicksort( pop : population) --> Population trié
-	si estVide(P) ou estVide(succ(P)) alors Quicksort(P) = P alors :
+	si estVide(P) ou estVide(succ(P)) alors :
 		Quicksort(pop) = pop
 	Sinon :
 		pivot = créerElementPop()
