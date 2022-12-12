@@ -79,7 +79,7 @@ void afficherPopulation(Population pop){
             printf(" \n");
             printf("Individu %d :  \n", i);
             afficherIndividu(actuel->indiv);
-            printf("Sa valeur decimale est (MSB a droite) : %d ", decode(actuel->indiv));
+            //printf("Sa valeur decimale est (MSB a droite) : %d ", decode(actuel->indiv));
             printf(" \n");
             actuel = actuel->suivant;
             i++;
@@ -105,6 +105,18 @@ void affqualite(Population pop){
     }
 }
 
+//Affichage de l'individu de la population ayant la meilleure qualité
+void meilleurIndividu(Population pop){
+    if(estVidePop(pop)){
+        printf("La population est vide\n");
+    }
+    else {
+        pop = quicksort(pop);
+        printf("Le meilleur individu est : \n");
+        afficherIndividu(pop.premierPop->indiv);  
+    }
+}
+
 /**
  * Fonctions de manipulation de la population
 */
@@ -126,7 +138,7 @@ Population quicksort(Population pop){
         pop2.premierPop = NULL;
         elementPop *actuel = pop.premierPop->suivant;
         while(actuel != NULL){
-            if(actuel->indiv.qualite > pivot->indiv.qualite){
+            if(actuel->indiv.qualite < pivot->indiv.qualite){
                 pop1 = AjoutTetePop(pop1, actuel->indiv);
             }
             else{
@@ -177,4 +189,42 @@ Population meilleur(Population pop, int select, int taillePop){
         return pop1;
     }
 }
+
+Population croisementPop(Population pop,float pCroise, int taillePop){
+    Population pop1;
+    pop1.premierPop = NULL;
+    if(estVidePop(pop)){
+        printf("La population est vide\n");
+    }
+    else{
+        int i=0;
+        while(i<taillePop){
+            int alea1 = rand()%taillePop;  
+            int alea2 = rand()%taillePop;  
+            while(alea1 == alea2){
+                alea2 = rand()%taillePop;
+            }
+            elementPop *actuel1 = pop.premierPop;
+            elementPop *actuel2 = pop.premierPop;
+            int j=0;
+            while(j<alea1 && actuel1->suivant != NULL){
+                actuel1 = actuel1->suivant;
+                j++;
+            }
+            j=0;
+            while(j<alea2 && actuel2->suivant != NULL){
+                actuel2 = actuel2->suivant;
+                j++;
+            }
+            
+            Individu indiv1 = croisementIndividu(actuel1->indiv, actuel2->indiv,pCroise);
+            
+            pop1 = AjoutTetePop(pop1, indiv1);
+            i++;
+        }
+        return pop1;
+    }
+}
+
+
 

@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include <math.h>
 #include "Individu.h"
 
 /**
@@ -12,9 +13,9 @@
 */
 
 //variables globales pour Qualité
-#define A -1
-#define B 1
-#define LONGINDIVQ 8
+#define A 0.1
+#define B 5
+#define LONGINDIVQ 16
 #define TRUE 1
 #define FALSE 0
 /**
@@ -132,8 +133,8 @@ int decode(Individu indiv){
 float calculQualiteIndividu(Individu indiv) {
     int x = decode(indiv);
     float fct = (x/puissance(2,LONGINDIVQ))*(B-A)+A;
-    float res = fct * fct;
-    return -res;
+    float res = log(fct);
+    return -res;    
 }
 
 //fonction puissance nécessaire pour qualité
@@ -146,7 +147,7 @@ float puissance(float x, int n) {
 }
 
 //intervertir les elements de deux individus selon une probabilité p pour chaque bit (tirage aléatoire avec comparaison à p)
-Individu croisement(Individu indiv1, Individu indiv2, float pCroise){
+Individu croisementIndividu(Individu indiv1, Individu indiv2, float pCroise){
     if(estVide(indiv1) || estVide(indiv2)){
         printf("L'un des individus est vide\n");
     }
@@ -155,9 +156,8 @@ Individu croisement(Individu indiv1, Individu indiv2, float pCroise){
     element *actuel1 = indiv1.premier;
     element *actuel2 = indiv2.premier;
     while(actuel1 != NULL && actuel2 != NULL){
-        srand(time(NULL));
         //chiffre aleatoire entre 0 et 1 ( proba de croisement )
-        float proba= rand()%2;
+        float proba = (float)rand()/(float)(RAND_MAX);
         if(proba < pCroise){
             indiv3 = AjoutTete(indiv3, actuel1->bits);
         }

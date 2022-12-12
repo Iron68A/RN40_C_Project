@@ -20,6 +20,8 @@ void afficherPopulation(Population pop);
 Population quicksort(Population population);
 void affqualite(Population pop);
 Population meilleur(Population popTriee, int select, int taillePop);
+Population croisementPop(Population pop, float pCroise, int longIndiv);
+void meilleurIndividu(Population pop);
 
 
 

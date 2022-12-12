@@ -28,6 +28,6 @@ void AfficherIndivMSB_Gauche(int *tab, int longIndiv);
 int decode(Individu Indiv);
 float calculQualiteIndividu(Individu indiv);
 float puissance(float x, int n);
-Individu croisement(Individu indiv1, Individu indiv2, float pcroise);
+Individu croisementIndividu(Individu indiv1, Individu indiv2, float pcroise);
 #endif // INDIVIDU_H
 
