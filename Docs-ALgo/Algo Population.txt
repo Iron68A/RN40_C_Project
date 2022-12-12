@@ -17,21 +17,18 @@ Fin
 • Ajouter en tete un Individus dans une population.
 
 AjoutTetePop(P : Population ,individu : Individu ) --> P : Population
-	elementPop = créerElementPop()
 	individu(elementPop) = individu
 	succ(elementPop) = tete(P)
 	tete(p) = elem2
 	AjoutTetePop(P,individu) = P
 
 • Ajouter en queu un Individus dans une population.
-AjoutqueuePop(pop : Population ,indiv : Individu )
-	elementPop = créerElementPop()
+AjoutqueuePop(pop : Population ,indiv : Individu 
 	individu(elementPop) = individu
 	succ(elementPop) = indéfini
 	si estvide(tete(pop)) alors : 
 		tete(pop) = elementPop
 	sinon
-		elementPop2 = créerElementPop()
 		elementPop2 = tete(pop)
 		tantque !estvide(succ(elementPop2)) faire 
 			elementPop2 = succ(elementPop2)
