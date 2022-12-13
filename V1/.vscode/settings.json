@@ -5,5 +5,8 @@
             "binaryPath": "d:\\GitHub\\RN40_C_Project\\V1\\main",
             "binaryArgs": []
         }
-    ]
+    ],
+    "files.associations": {
+        "limits": "c"
+    }
 }

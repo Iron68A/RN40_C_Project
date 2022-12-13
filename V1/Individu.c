@@ -134,7 +134,7 @@ float calculQualiteIndividu(Individu indiv) {
     int x = decode(indiv);
     float fct = (x/puissance(2,LONGINDIVQ))*(B-A)+A;
     float res = log(fct);
-    return -res;    
+    return -res;
 }
 
 //fonction puissance nécessaire pour qualité
