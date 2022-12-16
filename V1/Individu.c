@@ -66,8 +66,9 @@ int estVide(Individu indiv){
 }
 /**
  * Fonctions d'affichage (pour le débugage et la vérification)
+ * Non utilisées dans le programme principal, ni détaillées dans le rapport
 */
-
+/*
 //Mettre un individu dans un tableau poour affichage avec MSB à gauche
 void IndivToTab(Individu indiv, int *tab){
     if(estVide(indiv)){
@@ -92,10 +93,10 @@ void AfficherIndivMSB_Gauche(int *tab, int longIndiv){
         printf("%d", tab[i]);
     }
     printf("\n");
-}
+}*/
 
 
-//afficher individu
+//afficher chaque bit d'un individu, sa qualité et sa valeur décodée
 void afficherIndividu(Individu indiv){
     if(estVide(indiv)){
         printf("L'individu est vide\n");

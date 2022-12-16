@@ -36,8 +36,8 @@ int main() {
     /**
      * POPULATION
     */
-    Population pop = creerPopulation(5, LGINDIV);
-    afficherPopulation(pop);
+    //Population pop = creerPopulation(5, LGINDIV);
+    //afficherPopulation(pop);
     //affqualite(pop);
     //printf("--------------------\n");
     //Population pop3 = croisementPop(pop, PCROISE, LGINDIV);

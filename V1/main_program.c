@@ -12,6 +12,16 @@
 #define PCROISE 0.5
 #define LGINDIV 8
 
+
+/**
+ * Fichier main_program.c, contient le main du programme final
+ * @author Alexandre BARTHELME
+ * @date 16 12 2022
+ * @brief exécution du programme selon les paramètres de l'algo génétique aléatoire entre les bornes définies
+ * 
+*/
+
+
 int main(){
     //Definition des paramètres de l'algo génétique aléatoire entre les bornes définies
     srand(time(NULL));

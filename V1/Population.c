@@ -190,6 +190,8 @@ Population meilleur(Population pop, int select, int taillePop){
     }
 }
 
+
+//Fonction qui crée une population constitué d'individus de la premiere, croisés entre eux. (a partir d'une population triée)
 Population croisementPop(Population pop,float pCroise, int taillePop){
     Population pop1;
     pop1.premierPop = NULL;
