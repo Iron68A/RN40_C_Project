@@ -36,6 +36,6 @@ int main(){
     }
     printf("*------------------*\n");
     printf("Meilleur individu GENERAL : \n");
-    meilleurIndividu(pop);
+    meilleurIndividu(pop);                          //affichage du meilleur individu de la population
     return 0;
 }
