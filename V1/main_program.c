@@ -18,7 +18,7 @@ int main(){
     int PSELECT = rand() % (MAX_SELECT - MIN_SELECT + 1) + MIN_SELECT;
     printf("select : %d \n", PSELECT);
     int TAILLEPOP = rand() % (MAX_GEN_POP - MIN_GEN_POP + 1) + MIN_GEN_POP;
-    printf("gen_pop : %d \n", TAILLEPOP);
+    printf("taillePop : %d \n", TAILLEPOP);
     int NBGEN = rand() % (MAX_GEN_POP - MIN_GEN_POP + 1) + MIN_GEN_POP;
     printf("nb_gen : %d \n", NBGEN);
     
