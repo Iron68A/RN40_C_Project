@@ -40,9 +40,9 @@ int main(){
     for(i=0; i<NBGEN; i++){                         //boucle de génération 
         pop = croisementPop(pop, PCROISE, LGINDIV);   //croisement de la population
         pop = quicksort(pop);                      //tri de la population
-        printf("Generation %d  : \n", i+1);
-        meilleurIndividu(pop);
-        printf("- \n");
+        //printf("Generation %d  : \n", i+1);
+        //meilleurIndividu(pop);
+        //printf("- \n");
     }
     printf("*------------------*\n");
     printf("Meilleur individu GENERAL : \n");
