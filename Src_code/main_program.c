@@ -26,26 +26,24 @@ int main(){
     //Definition des paramètres de l'algo génétique aléatoire entre les bornes définies
     srand(time(NULL));
     int PSELECT = rand() % (MAX_SELECT - MIN_SELECT + 1) + MIN_SELECT;
-    printf("select : %d \n", PSELECT);
     int TAILLEPOP = rand() % (MAX_GEN_POP - MIN_GEN_POP + 1) + MIN_GEN_POP;
-    printf("taillePop : %d \n", TAILLEPOP);
-    int NBGEN = rand() % (MAX_GEN_POP - MIN_GEN_POP + 1) + MIN_GEN_POP;
-    printf("nb_gen : %d \n", NBGEN);
-    
+    int NBGEN = rand() % (MAX_GEN_POP - MIN_GEN_POP + 1) + MIN_GEN_POP;   
    
-    Population pop = creerPopulation(TAILLEPOP, LGINDIV);               //initialisation de la population
-    //afficherPopulation(pop);                        //affichage de la population
-    //affqualite(pop);                                //affichage de la qualité de la population(utile pour les tests)
-    int i;
-    for(i=0; i<NBGEN; i++){                         //boucle de génération 
-        pop = croisementPop(pop, PCROISE, LGINDIV);   //croisement de la population
-        pop = quicksort(pop);                      //tri de la population
-        //printf("Generation %d  : \n", i+1);
-        //meilleurIndividu(pop);
-        //printf("- \n");
+    Population pop = creerPopulation(TAILLEPOP, LGINDIV);       //initialisation de la population                                      
+    for(int i=0; i<NBGEN; i++){                                 //boucle de génération
+        printf("===================================Generation %d  : \n", i+1);
+
+        pop = croisementPop(pop, PCROISE, TAILLEPOP);        //croisement de la population
+
+        pop = quicksort(pop);                            //tri de la population 
+
+        pop = meilleur(pop,PSELECT,TAILLEPOP);          //sélection des meilleurs individus
     }
     printf("*------------------*\n");
+    //afficherPopulation(pop);
     printf("Meilleur individu GENERAL : \n");
-    meilleurIndividu(pop);                          //affichage du meilleur individu de la population
+    meilleurIndividu(pop);                        //affichage du meilleur individu de la dernière génération
+    printf("Infos : \n");
+    printf("PSELECT : %d , NBGEN : %d, TAILLEPOP : %d \n", PSELECT, NBGEN, TAILLEPOP);
     return 0;
 }

@@ -20,6 +20,7 @@ Individu AjoutTete(Individu indiv, Bit bit);
 Individu creerIndividuR(int longIndiv);
 Individu creerIndividuT(int longIndiv);
 int estVide(Individu indiv);
+int estIdentique(Individu indiv1, Individu indiv2);
 //Fonctions d'affichage (pour le débugage et la vérification)
 void afficherIndividu(Individu indiv);
 void IndivToTab(Individu indiv, int *tab);

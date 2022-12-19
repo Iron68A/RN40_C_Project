@@ -45,7 +45,6 @@ Population AjoutqueuePop(Population pop, Individu indiv){
 Population creerPopulation(int taillePop, int longIndiv){
     Population pop;
     pop.premierPop = NULL;
-    srand(time(NULL));
     int i;
     for(i=0; i<taillePop; i++){
         Individu indiv = creerIndividuT(longIndiv);
@@ -192,6 +191,7 @@ Population meilleur(Population pop, int select, int taillePop){
 
 
 //Fonction qui crée une population constitué d'individus de la premiere, croisés entre eux. (a partir d'une population triée)
+
 Population croisementPop(Population pop,float pCroise, int taillePop){
     Population pop1;
     pop1.premierPop = NULL;
@@ -227,6 +227,45 @@ Population croisementPop(Population pop,float pCroise, int taillePop){
         return pop1;
     }
 }
-
-
+/*
+Population croisementPop(Population pop,float pCroise, int taillePop){
+    Population pop1;
+    pop1.premierPop = NULL;
+    if(estVidePop(pop)){
+        printf("La population est vide\n");
+    }
+    else{
+        int i=0;
+        while(i<taillePop){
+            elementPop *actuel1 = pop.premierPop;
+            elementPop *actuel2 = pop.premierPop;
+            int alea1 = rand()%taillePop;  
+            int alea2 = rand()%taillePop;  
+            while(alea1 == alea2){
+                alea2 = rand()%taillePop;
+            }
+            int j=0;
+            while(j<alea1 && actuel1->suivant != NULL){
+                actuel1 = actuel1->suivant;
+                j++;
+            }
+            j=0;
+            while(j<alea2 && actuel2->suivant != NULL){
+                actuel2 = actuel2->suivant;
+                j++;
+            }
+            
+            if(!estIdentique(actuel1->indiv, actuel2->indiv)){
+                Individu indiv1 = croisementIndividu(actuel1->indiv, actuel2->indiv,pCroise);
+                pop1 = AjoutTetePop(pop1, indiv1);
+                i++;
+            }
+            else{
+                printf("Les individus sont identiques\n");
+            }
+            
+        }
+        return pop1;
+    }
+}*/
 

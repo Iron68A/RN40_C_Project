@@ -64,10 +64,40 @@ int estVide(Individu indiv){
         return FALSE;
     }
 }
+
+//Permet de s'assurer que les individus sont bien différents (pour le croisement & debugage)
+int estIdentique(Individu indiv1, Individu indiv2){
+    if(estVide(indiv1) || estVide(indiv2)){
+        printf("L'un des individus est vide\n");
+    }
+    else{
+        element *actuel1 = indiv1.premier;
+        element *actuel2 = indiv2.premier;
+        while(actuel1 != NULL && actuel2 != NULL){
+            if(actuel1->bits != actuel2->bits){
+                return FALSE;
+            }
+            actuel1 = actuel1->suivant;
+            actuel2 = actuel2->suivant;
+        }
+        if(actuel1 == NULL && actuel2 == NULL){
+            return TRUE;
+        }
+        else{
+            return FALSE;
+        }
+    }
+}
+
+
+
 /**
  * Fonctions d'affichage (pour le débugage et la vérification)
  * Non utilisées dans le programme principal, ni détaillées dans le rapport
 */
+
+
+
 /*
 //Mettre un individu dans un tableau poour affichage avec MSB à gauche
 void IndivToTab(Individu indiv, int *tab){
@@ -114,6 +144,8 @@ void afficherIndividu(Individu indiv){
     }
 }
 
+
+
 /**
  * Fonctions de manipulation des individus
 */
@@ -156,6 +188,10 @@ Individu croisementIndividu(Individu indiv1, Individu indiv2, float pCroise){
     indiv3.premier = NULL;
     element *actuel1 = indiv1.premier;
     element *actuel2 = indiv2.premier;
+    if(estIdentique(indiv1, indiv2)){
+        //printf("Les individus sont identiques dans indiv\n");
+        return indiv1;
+    }
     while(actuel1 != NULL && actuel2 != NULL){
         //chiffre aleatoire entre 0 et 1 ( proba de croisement )
         float proba = (float)rand()/(float)(RAND_MAX);
