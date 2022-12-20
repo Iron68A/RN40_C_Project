@@ -29,6 +29,23 @@ Individu AjoutTete(Individu indiv, Bit bit){
     indiv.premier = nouveau;
     return indiv;
 }
+Individu AjoutEnQueue(Individu indiv, Bit bit){
+    element *nouveau = (element *)malloc(sizeof(element));
+    nouveau->bits = bit;
+    nouveau->suivant = NULL;
+    if(indiv.premier == NULL){
+        indiv.premier = nouveau;
+    }
+    else{
+        element *actuel = indiv.premier;
+        while(actuel->suivant != NULL){
+            actuel = actuel->suivant;
+        }
+        actuel->suivant = nouveau;
+    }
+    return indiv;
+}
+
 
 //creer un individu itérativement
 Individu creerIndividuT(int longIndiv){
@@ -188,18 +205,18 @@ Individu croisementIndividu(Individu indiv1, Individu indiv2, float pCroise){
     indiv3.premier = NULL;
     element *actuel1 = indiv1.premier;
     element *actuel2 = indiv2.premier;
-    if(estIdentique(indiv1, indiv2)){
+    /*if(estIdentique(indiv1, indiv2)){
         //printf("Les individus sont identiques dans indiv\n");
         return indiv1;
-    }
+    }*/
     while(actuel1 != NULL && actuel2 != NULL){
         //chiffre aleatoire entre 0 et 1 ( proba de croisement )
         float proba = (float)rand()/(float)(RAND_MAX);
         if(proba < pCroise){
-            indiv3 = AjoutTete(indiv3, actuel1->bits);
+            indiv3 = AjoutEnQueue(indiv3, actuel1->bits);
         }
         else{
-            indiv3 = AjoutTete(indiv3, actuel2->bits);
+            indiv3 = AjoutEnQueue(indiv3, actuel2->bits);
         }
         actuel1 = actuel1->suivant;
         actuel2 = actuel2->suivant;
@@ -209,5 +226,3 @@ Individu croisementIndividu(Individu indiv1, Individu indiv2, float pCroise){
     
 
 }
-
-

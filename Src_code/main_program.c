@@ -28,8 +28,9 @@ int main(){
     int PSELECT = rand() % (MAX_SELECT - MIN_SELECT + 1) + MIN_SELECT;
     int TAILLEPOP = rand() % (MAX_GEN_POP - MIN_GEN_POP + 1) + MIN_GEN_POP;
     int NBGEN = rand() % (MAX_GEN_POP - MIN_GEN_POP + 1) + MIN_GEN_POP;   
-   
-    Population pop = creerPopulation(TAILLEPOP, LGINDIV);       //initialisation de la population                                      
+    Population pop = creerPopulation(TAILLEPOP, LGINDIV);       //initialisation de la population   
+    printf("Population initiale =============== : \n");       
+    afficherPopulation(quicksort(pop));                         
     for(int i=0; i<NBGEN; i++){                                 //boucle de génération
         printf("===================================Generation %d  : \n", i+1);
 
@@ -38,12 +39,28 @@ int main(){
         pop = quicksort(pop);                            //tri de la population 
 
         pop = meilleur(pop,PSELECT,TAILLEPOP);          //sélection des meilleurs individus
+        meilleurIndividu(pop);                        
     }
+ 
+    /*for(int i=0; i<5; i++){                                 
+        printf("===================================Generation %d  : \n", i+1);
+        pop = croisementPop(pop, PCROISE, 4);    
+        printf("Population croise =============== : \n");  
+        afficherPopulation(pop);
+        pop = quicksort(pop);                            
+        printf("Population triee =============== : \n");
+        afficherPopulation(pop);
+        pop = meilleur(pop,2,4);          
+        printf("Population MEILLEUR =============== : \n");
+        afficherPopulation(pop);
+    }*/
     printf("*------------------*\n");
     //afficherPopulation(pop);
     printf("Meilleur individu GENERAL : \n");
     meilleurIndividu(pop);                        //affichage du meilleur individu de la dernière génération
     printf("Infos : \n");
     printf("PSELECT : %d , NBGEN : %d, TAILLEPOP : %d \n", PSELECT, NBGEN, TAILLEPOP);
+
     return 0;
+
 }

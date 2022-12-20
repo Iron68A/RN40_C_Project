@@ -17,6 +17,7 @@ typedef struct Individu {
 
 //Primitives des listes chainées
 Individu AjoutTete(Individu indiv, Bit bit);
+Individu AjoutEnQueue(Individu indiv, Bit bit);
 Individu creerIndividuR(int longIndiv);
 Individu creerIndividuT(int longIndiv);
 int estVide(Individu indiv);
