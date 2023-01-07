@@ -4,15 +4,6 @@
 #include "Individu.h"
 #include "Population.h"
 
-
-#define MAX_SELECT 90
-#define MIN_SELECT 10
-#define MAX_GEN_POP 200
-#define MIN_GEN_POP 20
-#define PCROISE 0.5
-#define LGINDIV 8
-
-
 /**
  * Fichier main_program.c, contient le main du programme final
  * @author Alexandre BARTHELME
@@ -25,9 +16,36 @@
 int main(){
     //Definition des paramètres de l'algo génétique aléatoire entre les bornes définies
     srand(time(NULL));
-    int PSELECT = rand() % (MAX_SELECT - MIN_SELECT + 1) + MIN_SELECT;
-    int TAILLEPOP = rand() % (MAX_GEN_POP - MIN_GEN_POP + 1) + MIN_GEN_POP;
-    int NBGEN = rand() % (MAX_GEN_POP - MIN_GEN_POP + 1) + MIN_GEN_POP;   
+    //demande de saisie des paramètres de l'algo génétique
+    int PSELECT, NBGEN, TAILLEPOP,LGINDIV;
+    float PCROISE, A, B;
+    printf("Saisir les parametres de l'algo genetique, TOUJOURS > 0 : \n");
+    do{
+        printf("PSELECT (generalement entre 10 et 90 pour entre 20 et 200 individus): ");
+        scanf("%d", &PSELECT);
+    } while(PSELECT <=0);
+    
+    do{
+        printf("NBGEN (generalement entre 10 et 100 ): ");
+        scanf("%d", &NBGEN);
+    }while(NBGEN <=0);
+    
+    do{
+        printf("TAILLEPOP (generalement entre 20 et 200 ): ");
+        scanf("%d", &TAILLEPOP);
+    } while(TAILLEPOP <=0);
+    
+    do{
+        printf("PCROISE (generalement entre 0.5 et 1.0 ): ");
+        scanf("%f", &PCROISE);
+    } while(PCROISE <=0);
+    
+    do{
+        printf("LGINDIV (generalement entre 8 et 16 ): ");
+        scanf("%d", &LGINDIV);
+    } while(LGINDIV <=0);
+    
+
     Population pop = creerPopulation(TAILLEPOP, LGINDIV);       //initialisation de la population   
     printf("Population initiale =============== : \n");       
     afficherPopulation(quicksort(pop));                         
