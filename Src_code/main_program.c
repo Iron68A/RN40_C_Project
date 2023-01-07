@@ -42,18 +42,6 @@ int main(){
         meilleurIndividu(pop);                        
     }
  
-    /*for(int i=0; i<5; i++){                                 
-        printf("===================================Generation %d  : \n", i+1);
-        pop = croisementPop(pop, PCROISE, 4);    
-        printf("Population croise =============== : \n");  
-        afficherPopulation(pop);
-        pop = quicksort(pop);                            
-        printf("Population triee =============== : \n");
-        afficherPopulation(pop);
-        pop = meilleur(pop,2,4);          
-        printf("Population MEILLEUR =============== : \n");
-        afficherPopulation(pop);
-    }*/
     printf("*------------------*\n");
     //afficherPopulation(pop);
     printf("Meilleur individu GENERAL : \n");
